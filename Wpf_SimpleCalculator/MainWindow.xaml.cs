@@ -23,6 +23,88 @@ namespace Wpf_SimpleCalculator
         public MainWindow()
         {
             InitializeComponent();
+            //initializeWindow();
         }
-    }
+
+
+        
+
+        
+ 
+        void Button_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        void Button_Calculate_Click(object sender, RoutedEventArgs e)
+        {
+            if (ValidInputs(out string userFeedback))
+            {
+                
+                TextBox_answer.Text = (int.Parse(TextBox_Num1.Text) + int.Parse(TextBox_Num2.Text)).ToString();
+
+                SolutionWindow solutionWindow = new SolutionWindow(TextBox_answer);
+                solutionWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(userFeedback);
+            }
+            
+        
+        }
+
+        bool ValidInputs(out string userFeedback)
+        {
+            bool validInputs = true;
+            userFeedback = "";
+
+            if (!double.TryParse(TextBox_Num1.Text, out double tempLength))
+            {
+                validInputs = false;
+                userFeedback += "It appears that the value entered for Number one is not a valid number." + Environment.NewLine;
+            }
+            if (!double.TryParse(TextBox_Num2.Text, out double tempWidth))
+            {
+                validInputs = false;
+                userFeedback += "It appears that the value entered for Number two is not a valid number." + Environment.NewLine;
+            }
+            
+
+            return validInputs;
+        }
+
+        void Button_Help_Click(object sender, RoutedEventArgs e)
+        {
+            HelpWindow helpWindow = new HelpWindow();
+
+            helpWindow.ShowDialog();
+        }
+
+
+        private void RadioButton_Multiplication_Checked(object sender, RoutedEventArgs e)
+        {
+            if (ValidInputs(out string userFeedback))
+            {
+                TextBox_answer.Text = (int.Parse(TextBox_Num1.Text) * int.Parse(TextBox_Num2.Text)).ToString();
+            }
+            else
+            {
+                MessageBox.Show(userFeedback);
+            }
+
+        }
+
+        private void RadioButton_SubTraction_Checked(object sender, RoutedEventArgs e)
+        {
+            if (ValidInputs(out string userFeedback))
+            {
+                TextBox_answer.Text = (int.Parse(TextBox_Num1.Text) - int.Parse(TextBox_Num2.Text)).ToString();
+            }
+            else
+            {
+                MessageBox.Show(userFeedback);
+            }
+        }
+    }   
 }

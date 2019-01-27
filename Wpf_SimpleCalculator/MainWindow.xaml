@@ -5,7 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_SimpleCalculator"
         mc:Ignorable="d"
-        Title="Volume Calculator" Height="450" Width="800">
+        Title="Volume Calculator" 
+        Height="450" 
+        Width="800"
+        Background="Bisque">
+
+    <Window.Resources>
+        <ControlTemplate 
+            x:Key="RoundTextboxCornterTemplate"
+            TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}"   
+            x:Name="Bd" BorderBrush="Black"  
+            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -16,71 +44,153 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Label
-            Content="Volume Calculator"
+            Content="Calculator"
             Grid.Row="0"
             Grid.Column="0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontSize="16"/>
+            FontSize="25"
+            Foreground="DeepPink"/>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <RadioButton 
+                x:Name="RadioButton_Multiplication"
+                Content="Multiplication" 
+                Margin="5"
+                FontSize="16"
+                Foreground="HotPink" Checked="RadioButton_Multiplication_Checked"/>
+            <RadioButton
+                x:Name="RadioButton_SubTraction"
+                Content="Subtraction"
+                Margin="5"
+                FontSize="16"
+                Foreground="HotPink" Checked="RadioButton_SubTraction_Checked"
+                />
+        </StackPanel>
+
         <Grid
             Grid.Row="1"
             Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="112*"/>
+                <RowDefinition Height="112*"/>
+                <RowDefinition Height="111*"/>
             </Grid.RowDefinitions>
+
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="29*"/>
+                <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
+
             <Label
+                x:Name="Label_Num1"
                 Grid.Row="0"
                 Grid.Column="0"
-                Content="Length"
+                Content="First Number"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Padding="0,0,10,0"
-                FontSize="20"/>
+                FontSize="20"
+                Foreground="DeepPink"
+                Margin="0,20"/>
+
+            <TextBox
+                x:Name="TextBox_Num1"
+                Grid.Row="0"
+                Grid.Column="1"
+                Width="100"
+                Height="25"
+                Padding="5,0,0,0"
+                HorizontalAlignment="Left"
+                Template="{StaticResource RoundTextboxCornterTemplate}" 
+                Margin="0,21"/>
+
             <Label
+                x:Name="Label_Num2"
                 Grid.Row="1"
                 Grid.Column="0"
-                Content="Width"
+                Content="Second Number"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Padding="0,0,10,0"
-                FontSize="20"/>
-            <Label
-                Grid.Row="2"
-                Grid.Column="0"
-                Content="Height"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Padding="0,0,10,0"
-                FontSize="20"/>
-            <Label
-                Grid.Row="4"
-                Grid.Column="0"
-                Content="Volume"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Padding="0,0,10,0"
-                FontSize="20"/>
+                FontSize="20"
+                Foreground="DeepPink"
+                Margin="0,20"/>
+
+            <TextBox
+                x:Name="TextBox_Num2"
+                Grid.Row="1"
+                Grid.Column="1"
+                Width="100"
+                Height="25"
+                Padding="5,0,0,0"
+                HorizontalAlignment="Left"
+                Template="{StaticResource RoundTextboxCornterTemplate}" />
+
+            <Button
+                    Name="Button_Calculate"
+                    Grid.Row="2"
+                    Width="100"
+                    Height="25"
+                    Content="Calculate"
+                    HorizontalAlignment="Left"
+                    Foreground="Green"
+                    Click="Button_Calculate_Click" 
+                    FontSize="16" 
+                    FontFamily="Pristina" 
+                    Margin="164,25,0,35"
+                    />
+
+            <TextBox
+                    x:Name="TextBox_answer"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Width="150"
+                    Height="25"
+                    FontSize="25"
+                    Padding="5,0,0,0"
+                    HorizontalAlignment="Left"
+                    IsReadOnly="True"
+                    Foreground="Green"
+                    Template="{StaticResource RoundTextboxCornterTemplate}" 
+                    Margin="0,25,0,34"/>
+            
+
+
+
+
         </Grid>
         <StackPanel
             Grid.Row="1"
             Grid.Column="1"
             Orientation="Vertical">
-            <Label
-                Content="Photo"
-                HorizontalAlignment="Center"/>
+
             <Button
+                x:Name="Button_Help"
+                Content="Help"
+                Width="75"
+                Height="25"
+                Margin="10"
+                FontSize="16"
+                Foreground="HotPink"
+                Click="Button_Help_Click" FontFamily="Pristina"/>
+
+            <Button
+                x:Name="Button_Exit"
                 Content="Exit"
                 Width="75"
                 Height="25"
-                FontSize="16"/>
+                Margin="10"
+                FontSize="16"
+                Foreground="Red"
+                Click="Button_Exit_Click" FontFamily="Pristina"/>
+
+            <Image Height="282" Source="ewok.png" Cursor="None">
+                <Image.Effect>
+                    <DropShadowEffect ShadowDepth="15" BlurRadius="10"/>
+                </Image.Effect>
+            </Image>
         </StackPanel>
     </Grid>
 </Window>
