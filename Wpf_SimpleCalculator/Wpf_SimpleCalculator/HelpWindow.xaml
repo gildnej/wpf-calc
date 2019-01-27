@@ -1,0 +1,39 @@
+﻿<Window x:Class="Wpf_SimpleCalculator.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_SimpleCalculator"
+        mc:Ignorable="d"
+        Title="HelpWindow" 
+        Height="450" 
+        Width="800"
+        Background="Bisque">
+
+
+    <StackPanel>
+        <TextBlock
+        Text="This form is really Hard!"
+        TextAlignment="Center"
+        Margin="20"
+        FontSize="25"
+        Foreground="DeepPink"
+        />
+        <Button
+        x:Name="Button_Close"
+        Height="40"
+        Content="Close"
+        Click="Button_Close_Click" 
+        Margin="313,0,307,0" 
+        FontSize="24" 
+        FontFamily="Pristina"
+        Foreground="Red"
+        />
+        <Image  Source="ewok.png" HorizontalAlignment="Center" Stretch="Fill" Width="402" Height="292" Margin="208,0,182,0"
+            >
+            <Image.Effect>
+                <DropShadowEffect ShadowDepth="20"/>
+            </Image.Effect>
+        </Image>
+    </StackPanel>
+</Window>
