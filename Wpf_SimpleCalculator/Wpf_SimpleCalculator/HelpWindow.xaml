@@ -13,10 +13,10 @@
 
     <StackPanel>
         <TextBlock
-        Text="This form is really Hard!"
+        Text="put in the first number then put in the second number then click calculate."
         TextAlignment="Center"
         Margin="20"
-        FontSize="25"
+        FontSize="16"
         Foreground="DeepPink"
         />
         <Button

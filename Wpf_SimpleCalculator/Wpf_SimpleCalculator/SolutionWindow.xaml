@@ -10,17 +10,16 @@
         Width="800"
         Background="Bisque">
     <StackPanel>
-
-
-
-        <Label
-            x:Name="Label_answer"
-            Content="Answer"
-            FontSize="25"
-            HorizontalAlignment="Center"
-            Margin="10"
-            Foreground="DeepPink"
-            />
+        <TextBox
+                    x:Name="TextBox_answer"
+                    Width="150"
+                    Height="25"
+                    FontSize="25"
+                    Padding="5,0,0,0"
+                    HorizontalAlignment="Center"
+                    IsReadOnly="True"
+                    Foreground="Green"
+                    Margin="0,25,0,34"/>
         <Button
         x:Name="Button_Close"
         Height="77"

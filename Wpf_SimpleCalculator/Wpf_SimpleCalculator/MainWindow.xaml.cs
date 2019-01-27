@@ -27,7 +27,9 @@ namespace Wpf_SimpleCalculator
         }
 
 
+        
 
+        
  
         void Button_Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -36,11 +38,20 @@ namespace Wpf_SimpleCalculator
 
         void Button_Calculate_Click(object sender, RoutedEventArgs e)
         {
-            TextBox_answer = (int.Parse(TextBox_Num1.Text) + int.Parse(TextBox_Num2.Text)).ToString();
+            if (ValidInputs(out string userFeedback))
+            {
+                
+                TextBox_answer.Text = (int.Parse(TextBox_Num1.Text) + int.Parse(TextBox_Num2.Text)).ToString();
 
+                SolutionWindow solutionWindow = new SolutionWindow(TextBox_answer);
+                solutionWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(userFeedback);
+            }
             
-
-            
+        
         }
 
         bool ValidInputs(out string userFeedback)
@@ -70,15 +81,30 @@ namespace Wpf_SimpleCalculator
             helpWindow.ShowDialog();
         }
 
-        private void Btn_Addition_Click(object sender, RoutedEventArgs e)
+
+        private void RadioButton_Multiplication_Checked(object sender, RoutedEventArgs e)
         {
-           
-            int num1 = Convert.ToInt32(TextBox_Num1.Text);
+            if (ValidInputs(out string userFeedback))
+            {
+                TextBox_answer.Text = (int.Parse(TextBox_Num1.Text) * int.Parse(TextBox_Num2.Text)).ToString();
+            }
+            else
+            {
+                MessageBox.Show(userFeedback);
+            }
 
-            int num2 = Convert.ToInt32(TextBox_Num2.Text);
+        }
 
-            
-
+        private void RadioButton_SubTraction_Checked(object sender, RoutedEventArgs e)
+        {
+            if (ValidInputs(out string userFeedback))
+            {
+                TextBox_answer.Text = (int.Parse(TextBox_Num1.Text) - int.Parse(TextBox_Num2.Text)).ToString();
+            }
+            else
+            {
+                MessageBox.Show(userFeedback);
+            }
         }
     }   
 }

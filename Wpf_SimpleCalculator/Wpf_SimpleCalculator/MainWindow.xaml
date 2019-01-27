@@ -58,13 +58,13 @@
                 Content="Multiplication" 
                 Margin="5"
                 FontSize="16"
-                Foreground="HotPink"/>
+                Foreground="HotPink" Checked="RadioButton_Multiplication_Checked"/>
             <RadioButton
                 x:Name="RadioButton_SubTraction"
                 Content="Subtraction"
                 Margin="5"
                 FontSize="16"
-                Foreground="HotPink"
+                Foreground="HotPink" Checked="RadioButton_SubTraction_Checked"
                 />
         </StackPanel>
 
@@ -155,17 +155,7 @@
                     Foreground="Green"
                     Template="{StaticResource RoundTextboxCornterTemplate}" 
                     Margin="0,25,0,34"/>
-            <Button
-                x:Name="Btn_Addition"
-                Content="+" 
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Top" 
-                Width="74" 
-                Grid.Column="1" 
-                Margin="134,94,24,0" 
-                Height="26" 
-                Grid.RowSpan="2" Click="Btn_Addition_Click" 
-                />
+            
 
 
 

@@ -21,7 +21,7 @@ namespace Wpf_SimpleCalculator
     {
         private TextBox answer;
 
-        public SolutionWindow( int answer)
+        public SolutionWindow(int answer)
         {
             InitializeComponent();
 
