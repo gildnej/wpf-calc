@@ -25,12 +25,8 @@ namespace Wpf_SimpleCalculator
         {
             InitializeComponent();
 
+            TextBox_answer.Text = answer.ToString();
             
-        }
-
-        public SolutionWindow(TextBox answer)
-        {
-            this.answer = answer;
         }
 
         private void Button_Close_Click(object sender, RoutedEventArgs e)

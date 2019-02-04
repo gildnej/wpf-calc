@@ -42,8 +42,9 @@ namespace Wpf_SimpleCalculator
             {
                 
                 TextBox_answer.Text = (int.Parse(TextBox_Num1.Text) + int.Parse(TextBox_Num2.Text)).ToString();
-
-                SolutionWindow solutionWindow = new SolutionWindow(TextBox_answer);
+                int answer = 0;
+                Int32.TryParse(TextBox_answer.Text, out answer);
+                SolutionWindow solutionWindow = new SolutionWindow(answer);
                 solutionWindow.ShowDialog();
             }
             else
